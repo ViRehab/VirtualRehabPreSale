@@ -51,6 +51,9 @@ contract PreICO is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice, 
   ///@notice The total amount of VRH tokens allocated for the pre ico.
   uint256 public totalSaleAllocation;
 
+  ///@notice minimum contribution in cents
+  uint256 minContributionInUSDCents;
+
   uint[3] public bonusTimestamps;
   uint[3] public bonusPercentages;
 
@@ -99,6 +102,7 @@ contract PreICO is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice, 
     setTokenPrice(_tokenPriceInCents);
     setBinanceCoinPrice(_binanceCoinPriceInCents);
     setCreditsTokenPrice(_creditsTokenPriceInCents);
+    setMinimumContribution(_minContributionInUSDCents);
 
     increaseTokenSaleAllocation();
 
@@ -125,7 +129,7 @@ contract PreICO is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice, 
 
     ///Calculate equivalent amount in dollar cent value.
     uint256 contributionCents  = convertToCents(allowance, binanceCoinPriceInCents, 18);
-
+    require(contributionCents >= minContributionInUSDCents);
 
 
     ///Calculate the amount of tokens per the contribution.
@@ -158,7 +162,7 @@ contract PreICO is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice, 
     ///Calculate equivalent amount in dollar cent value.
     uint256 contributionCents = convertToCents(allowance, creditsTokenPriceInCents, 6);
 
-
+    require(contributionCents >= minContributionInUSDCents);
 
     ///Calculate the amount of tokens per the contribution.
     uint256 numTokens = contributionCents.mul(1 ether).div(tokenPriceInCents);
@@ -181,6 +185,13 @@ contract PreICO is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice, 
   }
 
 
+  function setMinimumContribution(uint256 _cents) public whenNotPaused onlyAdmin {
+   require(_cents > 0);
+
+   emit MinimumContributionChanged(minContributionInUSDCents, _cents);
+   minContributionInUSDCents = _cents;
+ }
+
   ///@notice The equivalent dollar amount of each contribution request.
   uint256 private amountInUSDCents;
 
@@ -191,6 +202,7 @@ contract PreICO is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice, 
     require(initialized);
 
     amountInUSDCents = convertToCents(_weiAmount, etherPriceInCents, 18);
+    require(amountInUSDCents >= minContributionInUSDCents);
     ///Continue validating the purchase.
     super._preValidatePurchase(_beneficiary, _weiAmount);
   }
@@ -234,7 +246,6 @@ contract PreICO is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice, 
       bonusPercentages[i] = _bonusPercentages[i];
     }
   }
-
 
   ///@notice Gets the bonus applicable for the supplied dollar cent value.
   function getBonusPercentage(uint _cents) view public returns(uint256) {
