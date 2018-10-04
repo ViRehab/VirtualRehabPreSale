@@ -226,13 +226,13 @@ contract PreICO is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice, 
 
   ///@notice Sets the bonus structure.
   ///The bonus limits must be in decreasing order.
-  function setBonuses(uint[] _bonusLimits, uint[] _bonusPercentages) public onlyAdmin {
-    /* require(_bonusLimits.length == _bonusPercentages.length);
-    require(_bonusPercentages.length == 3);
-    for(uint8 i=0;i<_bonusLimits.length;i++) {
-      bonusLimits[i] = _bonusLimits[i];
+  function setBonuses(uint[] _bonusTimestamps, uint[] _bonusPercentages) public onlyAdmin {
+    require(_bonusTimestamps.length == _bonusPercentages.length);
+    require(_bonusTimestamps.length == 3);
+    for(uint8 i=0;i<_bonusTimestamps.length;i++) {
+      bonusTimestamps[i] = _bonusTimestamps[i];
       bonusPercentages[i] = _bonusPercentages[i];
-    } */
+    }
   }
 
 
