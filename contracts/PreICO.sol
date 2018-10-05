@@ -52,7 +52,7 @@ contract PreICO is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice, 
   uint256 public totalSaleAllocation;
 
   ///@notice minimum contribution in cents
-  uint256 minContributionInUSDCents;
+  uint256 public minContributionInUSDCents;
 
   uint[3] public bonusTimestamps;
   uint[3] public bonusPercentages;
@@ -90,7 +90,7 @@ contract PreICO is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice, 
   ///@param _binanceCoinPriceInCents Binance Coin Price in cents
   ///@param _creditsTokenPriceInCents Credits Token Price in cents
   ///@param _minContributionInUSDCents The minimum contribution in dollar cent value
-  function initializePrivateSale(uint _etherPriceInCents, uint _tokenPriceInCents, uint _binanceCoinPriceInCents, uint _creditsTokenPriceInCents, uint _minContributionInUSDCents, uint[] _bonusTimestamps, uint[] _bonusPercentages) external onlyAdmin {
+  function initializeSale(uint _etherPriceInCents, uint _tokenPriceInCents, uint _binanceCoinPriceInCents, uint _creditsTokenPriceInCents, uint _minContributionInUSDCents, uint[] _bonusTimestamps, uint[] _bonusPercentages) external onlyAdmin {
     require(!initialized);
     require(_etherPriceInCents > 0);
     require(_tokenPriceInCents > 0);
@@ -135,8 +135,11 @@ contract PreICO is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice, 
     ///Calculate the amount of tokens per the contribution.
     uint256 numTokens = contributionCents.mul(1 ether).div(tokenPriceInCents);
 
+
     ///Calculate the bonus based on the number of tokens and the dollar cent value.
-    uint256 bonus = calculateBonus(numTokens, getBonusPercentage(contributionCents));
+    uint256 bonus = calculateBonus(numTokens, getBonusPercentage(now));
+
+
 
     require(totalTokensSold.add(numTokens).add(bonus) <= totalSaleAllocation);
 
@@ -168,7 +171,7 @@ contract PreICO is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice, 
     uint256 numTokens = contributionCents.mul(1 ether).div(tokenPriceInCents);
 
     ///Calculate the bonus based on the number of tokens and the dollar cent value.
-    uint256 bonus = calculateBonus(numTokens, getBonusPercentage(contributionCents));
+    uint256 bonus = calculateBonus(numTokens, getBonusPercentage(now));
 
     require(totalTokensSold.add(numTokens).add(bonus) <= totalSaleAllocation);
 
@@ -186,8 +189,6 @@ contract PreICO is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice, 
 
 
   function setMinimumContribution(uint256 _cents) public whenNotPaused onlyAdmin {
-   require(_cents > 0);
-
    emit MinimumContributionChanged(minContributionInUSDCents, _cents);
    minContributionInUSDCents = _cents;
  }
@@ -214,7 +215,7 @@ contract PreICO is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice, 
   function _processPurchase(address _beneficiary, uint256 _tokenAmount) internal {
 
     ///amountInUSDCents is set on _preValidatePurchase
-    uint256 bonus = calculateBonus(_tokenAmount, getBonusPercentage(amountInUSDCents));
+    uint256 bonus = calculateBonus(_tokenAmount, getBonusPercentage(now));
 
     ///Ensure that the sale does not exceed allocation.
     require(totalTokensSold.add(_tokenAmount).add(bonus) <= totalSaleAllocation);
@@ -248,9 +249,9 @@ contract PreICO is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice, 
   }
 
   ///@notice Gets the bonus applicable for the supplied dollar cent value.
-  function getBonusPercentage(uint _cents) view public returns(uint256) {
+  function getBonusPercentage(uint _timestamp) view public returns(uint256) {
     for(uint8 i=0;i<bonusTimestamps.length;i++) {
-      if(now <= bonusTimestamps[i]) return bonusPercentages[i];
+      if(_timestamp <= bonusTimestamps[i]) return bonusPercentages[i];
     }
     return 0;
   }
