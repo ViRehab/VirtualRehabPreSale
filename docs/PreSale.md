@@ -1,10 +1,10 @@
-﻿# Virtual Rehab Pre ICO. (PreSale.sol)
+﻿# Virtual Rehab Presale. (PreSale.sol)
 
 **↗ Extends: [TokenPrice](TokenPrice.md), [EtherPrice](EtherPrice.md), [BinanceCoinPrice](BinanceCoinPrice.md), [CreditsTokenPrice](CreditsTokenPrice.md), [BonusHolder](BonusHolder.md), [FinalizableCrowdsale](FinalizableCrowdsale.md), [CustomWhitelist](CustomWhitelist.md)**
 
 **PreSale**
 
-This contract enables contributors to participate in Virtual Rehab Pre ICO.
+This contract enables contributors to participate in Virtual Rehab Presale.
  
 The Virtual Rehab Pre-Sale provides early investors with an opportunity 
 to take part into the Virtual Rehab token sale ahead of the main sale launch. 
@@ -16,12 +16,12 @@ to validate their accreditation. We, unfortunately, do not accept contributions
 from non-accredited investors within the US along with any contribution
 from China, Republic of Korea, and New Zealand. Any questions or additional information needed
 can be sought by sending an e-mail to investors＠virtualrehab.co.
-
-///Accepted Currencies: Ether, Binance Coin, Credits Token.
+ 
+Accepted Currencies: Ether, Binance Coin, Credits Token.
 
 ## Constructor
 
-Creates and constructs this pre ico contract.
+Creates and constructs this presale contract.
 
 ```js
 constructor(uint256 _startTime, uint256 _endTime) public
@@ -60,8 +60,8 @@ event TokensAllocatedForSale(uint256 _newAllowance, uint256 _oldAllowance);
 
 | Name        | Type           | Description  |
 | ------------- |------------- | -----|
-| _startTime | uint256 | The date and time of the pre ico start. | 
-| _endTime | uint256 | The date and time of the pre ico end. | 
+| _startTime | uint256 | The date and time of the presale start. | 
+| _endTime | uint256 | The date and time of the presale end. | 
 
 ## Functions
 
@@ -89,7 +89,7 @@ event TokensAllocatedForSale(uint256 _newAllowance, uint256 _oldAllowance);
 
 ### initializeSale
 
-Initializes the pre ico.
+Initializes the presale.
 
 ```js
 function initializeSale(uint256 _etherPriceInCents, uint256 _tokenPriceInCents, uint256 _binanceCoinPriceInCents, uint256 _creditsTokenPriceInCents, uint256 _minContributionInUSDCents, uint256[] _bonusTimestamps, uint256[] _bonusPercentages) external onlyAdmin
@@ -266,7 +266,7 @@ returns(uint256)
 
 ### increaseTokenSaleAllocation
 
-Recalculates and/or reassigns the total tokens allocated for the pre ico.
+Recalculates and/or reassigns the total tokens allocated for the presale.
 
 ```js
 function increaseTokenSaleAllocation() public whenNotPaused onlyAdmin
@@ -299,7 +299,7 @@ function finalizeCrowdsale() public onlyAdmin
 
 ⤾ overrides [TimedCrowdsale.hasClosed](TimedCrowdsale.md#hasclosed)
 
-Signifies whether or not the pre ico has ended.
+Signifies whether or not the presale has ended.
 
 ```js
 function hasClosed() public view
@@ -308,7 +308,7 @@ returns(bool)
 
 **Returns**
 
-Returns true if the pre ico has ended.
+Returns true if the presale has ended.
 
 ### finalization
 

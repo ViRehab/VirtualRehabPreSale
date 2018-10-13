@@ -984,9 +984,9 @@ contract BonusHolder is CustomPausable {
 
 
 
-///@title Virtual Rehab Pre ICO.
+///@title Virtual Rehab Presale.
 ///@author Binod Nirvan, Subramanian Venkatesan (http://virtualrehab.co)
-///@notice This contract enables contributors to participate in Virtual Rehab Pre ICO.
+///@notice This contract enables contributors to participate in Virtual Rehab Presale.
 /// 
 ///The Virtual Rehab Pre-Sale provides early investors with an opportunity 
 ///to take part into the Virtual Rehab token sale ahead of the main sale launch. 
@@ -998,7 +998,7 @@ contract BonusHolder is CustomPausable {
 ///from non-accredited investors within the US along with any contribution
 ///from China, Republic of Korea, and New Zealand. Any questions or additional information needed
 ///can be sought by sending an e-mail to investors＠virtualrehab.co.
-///
+/// 
 ///Accepted Currencies: Ether, Binance Coin, Credits Token.
 contract PreSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice, BonusHolder, FinalizableCrowdsale, CustomWhitelist {
   ///@notice The ERC20 token contract of Binance Coin. Must be: 0xB8c77482e45F1F44dE1745F52C74426C631bDD52
@@ -1010,7 +1010,7 @@ contract PreSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice,
   ///@notice The total amount of VRH tokens sold in the private round.
   uint256 public totalTokensSold;
 
-  ///@notice The total amount of VRH tokens allocated for the pre ico.
+  ///@notice The total amount of VRH tokens allocated for the presale.
   uint256 public totalSaleAllocation;
 
   ///@notice minimum contribution in cents
@@ -1019,7 +1019,7 @@ contract PreSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice,
   uint[3] public bonusTimestamps;
   uint[3] public bonusPercentages;
 
-  ///@notice Signifies if the pre ico was started.
+  ///@notice Signifies if the presale was started.
   bool public initialized;
 
   event SaleInitialized();
@@ -1030,9 +1030,9 @@ contract PreSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice,
   event ERC20Withdrawn(address indexed _contract, uint256 _amount);
   event TokensAllocatedForSale(uint256 _newAllowance, uint256 _oldAllowance);
 
-  ///@notice Creates and constructs this pre ico contract.
-  ///@param _startTime The date and time of the pre ico start.
-  ///@param _endTime The date and time of the pre ico end.
+  ///@notice Creates and constructs this presale contract.
+  ///@param _startTime The date and time of the presale start.
+  ///@param _endTime The date and time of the presale end.
   ///@param _binanceCoin Binance coin contract. Must be: 0xB8c77482e45F1F44dE1745F52C74426C631bDD52.
   ///@param _creditsToken credits Token contract. Must be: 0x46b9Ad944d1059450Da1163511069C718F699D31.
   ///@param _vrhToken VRH token contract.
@@ -1046,7 +1046,7 @@ contract PreSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice,
     creditsToken = _creditsToken;
   }
 
-  ///@notice Initializes the pre ico.
+  ///@notice Initializes the presale.
   ///@param _etherPriceInCents Ether Price in cents
   ///@param _tokenPriceInCents VRHToken Price in cents
   ///@param _binanceCoinPriceInCents Binance Coin Price in cents
@@ -1185,7 +1185,7 @@ contract PreSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice,
     ///Assign bonuses so that they can be later withdrawn.
     assignBonus(_beneficiary, bonus);
 
-    ///Update the sum of tokens sold during the pre ico.
+    ///Update the sum of tokens sold during the presale.
     totalTokensSold = totalTokensSold.add(_tokenAmount).add(bonus);
 
     ///Continue processing the purchase.
@@ -1236,7 +1236,7 @@ contract PreSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice,
     return _getTokenAmount(_weiAmount);
   }
 
-  ///@notice Recalculates and/or reassigns the total tokens allocated for the pre ico.
+  ///@notice Recalculates and/or reassigns the total tokens allocated for the presale.
   function increaseTokenSaleAllocation() public whenNotPaused onlyAdmin {
     ///Check the allowance of this contract to spend.
     uint256 allowance = token.allowance(msg.sender, this);
@@ -1244,7 +1244,7 @@ contract PreSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice,
     ///Get the current allocation.
     uint256 current = totalSaleAllocation;
 
-    ///Update the total token allocation for the pre ico.
+    ///Update the total token allocation for the presale.
     totalSaleAllocation = totalSaleAllocation.add(allowance);
 
     ///Transfer (receive) the allocated VRH tokens.
@@ -1291,8 +1291,8 @@ contract PreSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice,
     emit Finalized();
   }
 
-  ///@notice Signifies whether or not the pre ico has ended.
-  ///@return Returns true if the pre ico has ended.
+  ///@notice Signifies whether or not the presale has ended.
+  ///@return Returns true if the presale has ended.
   function hasClosed() public view returns (bool) {
     return (totalTokensSold >= totalSaleAllocation) || super.hasClosed();
   }
