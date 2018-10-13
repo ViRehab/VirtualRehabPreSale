@@ -25,12 +25,12 @@ import "./BonusHolder.sol";
 ///@title Virtual Rehab Pre ICO.
 ///@author Binod Nirvan, Subramanian Venkatesan (http://virtualrehab.co)
 ///@notice This contract enables contributors to participate in Virtual Rehab Pre ICO.
-///
-///The Virtual Rehab Pre ICO provides early investors with an opportunity
-///to take part into the Virtual Rehab token sale ahead of the pre-sale and main sale launch.
-///All early investors are expected to successfully complete KYC and whitelisting
+/// 
+///The Virtual Rehab Pre-Sale provides early investors with an opportunity 
+///to take part into the Virtual Rehab token sale ahead of the main sale launch. 
+///All early investors are expected to successfully complete KYC and whitelisting 
 ///to contribute to the Virtual Rehab token sale.
-///
+/// 
 ///US investors must be accredited investors and must provide all requested documentation
 ///to validate their accreditation. We, unfortunately, do not accept contributions
 ///from non-accredited investors within the US along with any contribution
@@ -38,7 +38,7 @@ import "./BonusHolder.sol";
 ///can be sought by sending an e-mail to investors＠virtualrehab.co.
 ///
 ///Accepted Currencies: Ether, Binance Coin, Credits Token.
-contract PreICO is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice, BonusHolder, FinalizableCrowdsale, CustomWhitelist {
+contract PreSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice, BonusHolder, FinalizableCrowdsale, CustomWhitelist {
   ///@notice The ERC20 token contract of Binance Coin. Must be: 0xB8c77482e45F1F44dE1745F52C74426C631bDD52
   ERC20 public binanceCoin;
 

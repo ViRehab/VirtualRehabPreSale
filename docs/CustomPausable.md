@@ -1,6 +1,7 @@
 ﻿# This contract enables you to create pausable mechanism to stop in case of emergency. (CustomPausable.sol)
 
-**contract CustomPausable is [CustomAdmin](CustomAdmin.md)**
+**↗ Extends: [CustomAdmin](CustomAdmin.md)**
+**↘ Derived Contracts: [CustomWhitelist](CustomWhitelist.md), [EtherPrice](EtherPrice.md), [TokenPrice](TokenPrice.md), [BinanceCoinPrice](BinanceCoinPrice.md), [CreditsTokenPrice](CreditsTokenPrice.md), [BonusHolder](BonusHolder.md)**.
 
 **CustomPausable**
 
@@ -76,13 +77,13 @@ function unpause() external onlyAdmin whenPaused
 - [FinalizableCrowdsale](FinalizableCrowdsale.md)
 - [EtherPrice](EtherPrice.md)
 - [TokenPrice](TokenPrice.md)
-- [PrivateSale](PrivateSale.md)
 - [ERC20Basic](ERC20Basic.md)
 - [SafeMath](SafeMath.md)
 - [BinanceCoinPrice](BinanceCoinPrice.md)
 - [ERC20Mock](ERC20Mock.md)
 - [BasicToken](BasicToken.md)
 - [SafeERC20](SafeERC20.md)
+- [PreSale](PreSale.md)
 - [TimedCrowdsale](TimedCrowdsale.md)
 - [StandardToken](StandardToken.md)
 - [CustomPausable](CustomPausable.md)

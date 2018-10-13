@@ -1,6 +1,7 @@
 ﻿# This contract keeps track of Ether price. (EtherPrice.sol)
 
-**contract EtherPrice is [CustomPausable](CustomPausable.md)**
+**↗ Extends: [CustomPausable](CustomPausable.md)**
+**↘ Derived Contracts: [PreSale](PreSale.md)**.
 
 **EtherPrice**
 
@@ -39,13 +40,13 @@ function setEtherPrice(uint256 _cents) public whenNotPaused onlyAdmin
 - [FinalizableCrowdsale](FinalizableCrowdsale.md)
 - [EtherPrice](EtherPrice.md)
 - [TokenPrice](TokenPrice.md)
-- [PrivateSale](PrivateSale.md)
 - [ERC20Basic](ERC20Basic.md)
 - [SafeMath](SafeMath.md)
 - [BinanceCoinPrice](BinanceCoinPrice.md)
 - [ERC20Mock](ERC20Mock.md)
 - [BasicToken](BasicToken.md)
 - [SafeERC20](SafeERC20.md)
+- [PreSale](PreSale.md)
 - [TimedCrowdsale](TimedCrowdsale.md)
 - [StandardToken](StandardToken.md)
 - [CustomPausable](CustomPausable.md)

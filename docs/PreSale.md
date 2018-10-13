@@ -1,14 +1,14 @@
-﻿# Virtual Rehab Private Sale. (PrivateSale.sol)
+﻿# Virtual Rehab Pre ICO. (PreSale.sol)
 
-**contract PrivateSale is [TokenPrice](TokenPrice.md), [EtherPrice](EtherPrice.md), [BinanceCoinPrice](BinanceCoinPrice.md), [CreditsTokenPrice](CreditsTokenPrice.md), [BonusHolder](BonusHolder.md), [FinalizableCrowdsale](FinalizableCrowdsale.md), [CustomWhitelist](CustomWhitelist.md)**
+**↗ Extends: [TokenPrice](TokenPrice.md), [EtherPrice](EtherPrice.md), [BinanceCoinPrice](BinanceCoinPrice.md), [CreditsTokenPrice](CreditsTokenPrice.md), [BonusHolder](BonusHolder.md), [FinalizableCrowdsale](FinalizableCrowdsale.md), [CustomWhitelist](CustomWhitelist.md)**
 
-**PrivateSale**
+**PreSale**
 
-This contract enables contributors to participate in Virtual Rehab Private Sale.
+This contract enables contributors to participate in Virtual Rehab Pre ICO.
  
-The Virtual Rehab Private Sale provides early investors with an opportunity
-to take part into the Virtual Rehab token sale ahead of the pre-sale and main sale launch.
-All early investors are expected to successfully complete KYC and whitelisting
+The Virtual Rehab Pre-Sale provides early investors with an opportunity 
+to take part into the Virtual Rehab token sale ahead of the main sale launch. 
+All early investors are expected to successfully complete KYC and whitelisting 
 to contribute to the Virtual Rehab token sale.
  
 US investors must be accredited investors and must provide all requested documentation
@@ -16,12 +16,12 @@ to validate their accreditation. We, unfortunately, do not accept contributions
 from non-accredited investors within the US along with any contribution
 from China, Republic of Korea, and New Zealand. Any questions or additional information needed
 can be sought by sending an e-mail to investors＠virtualrehab.co.
- 
-Accepted Currencies: Ether, Binance Coin, Credits Token.
+
+///Accepted Currencies: Ether, Binance Coin, Credits Token.
 
 ## Constructor
 
-Creates and constructs this private sale contract.
+Creates and constructs this pre ico contract.
 
 ```js
 constructor(uint256 _startTime, uint256 _endTime) public
@@ -39,8 +39,7 @@ contract ERC20 public creditsToken;
 uint256 public totalTokensSold;
 uint256 public totalSaleAllocation;
 uint256 public minContributionInUSDCents;
-mapping(address => uint256) public assignedBonusRates;
-uint256[3] public bonusLimits;
+uint256[3] public bonusTimestamps;
 uint256[3] public bonusPercentages;
 bool public initialized;
 
@@ -61,12 +60,12 @@ event TokensAllocatedForSale(uint256 _newAllowance, uint256 _oldAllowance);
 
 | Name        | Type           | Description  |
 | ------------- |------------- | -----|
-| _startTime | uint256 | The date and time of the private sale start. | 
-| _endTime | uint256 | The date and time of the private sale end. | 
+| _startTime | uint256 | The date and time of the pre ico start. | 
+| _endTime | uint256 | The date and time of the pre ico end. | 
 
 ## Functions
 
-- [initializePrivateSale](#initializeprivatesale)
+- [initializeSale](#initializesale)
 - [contributeInBNB](#contributeinbnb)
 - [contributeInCreditsToken](#contributeincreditstoken)
 - [setMinimumContribution](#setminimumcontribution)
@@ -88,12 +87,12 @@ event TokensAllocatedForSale(uint256 _newAllowance, uint256 _oldAllowance);
 - [changeClosingTime](#changeclosingtime)
 - [getRemainingTokensForSale](#getremainingtokensforsale)
 
-### initializePrivateSale
+### initializeSale
 
-Initializes the private sale.
+Initializes the pre ico.
 
 ```js
-function initializePrivateSale(uint256 _etherPriceInCents, uint256 _tokenPriceInCents, uint256 _binanceCoinPriceInCents, uint256 _creditsTokenPriceInCents, uint256 _minContributionInUSDCents) external onlyAdmin
+function initializeSale(uint256 _etherPriceInCents, uint256 _tokenPriceInCents, uint256 _binanceCoinPriceInCents, uint256 _creditsTokenPriceInCents, uint256 _minContributionInUSDCents, uint256[] _bonusTimestamps, uint256[] _bonusPercentages) external onlyAdmin
 ```
 
 **Arguments**
@@ -105,6 +104,8 @@ function initializePrivateSale(uint256 _etherPriceInCents, uint256 _tokenPriceIn
 | _binanceCoinPriceInCents | uint256 | Binance Coin Price in cents | 
 | _creditsTokenPriceInCents | uint256 | Credits Token Price in cents | 
 | _minContributionInUSDCents | uint256 | The minimum contribution in dollar cent value | 
+| _bonusTimestamps | uint256[] |  | 
+| _bonusPercentages | uint256[] |  | 
 
 ### contributeInBNB
 
@@ -134,7 +135,7 @@ function setMinimumContribution(uint256 _cents) public whenNotPaused onlyAdmin
 
 ### _preValidatePurchase
 
-:small_red_triangle: overrides [TimedCrowdsale._preValidatePurchase](TimedCrowdsale.md#_prevalidatepurchase)
+⤾ overrides [TimedCrowdsale._preValidatePurchase](TimedCrowdsale.md#_prevalidatepurchase)
 
 Additional validation rules before token contribution is actually allowed.
 
@@ -151,7 +152,7 @@ function _preValidatePurchase(address _beneficiary, uint256 _weiAmount) internal
 
 ### _processPurchase
 
-:small_red_triangle: overrides [Crowdsale._processPurchase](Crowdsale.md#_processpurchase)
+⤾ overrides [Crowdsale._processPurchase](Crowdsale.md#_processpurchase)
 
 This function is automatically called when a contribution request passes all validations.
 
@@ -188,14 +189,14 @@ Sets the bonus structure.
 The bonus limits must be in decreasing order.
 
 ```js
-function setBonuses(uint256[] _bonusLimits, uint256[] _bonusPercentages) public onlyAdmin
+function setBonuses(uint256[] _bonusTimestamps, uint256[] _bonusPercentages) public onlyAdmin
 ```
 
 **Arguments**
 
 | Name        | Type           | Description  |
 | ------------- |------------- | -----|
-| _bonusLimits | uint256[] |  | 
+| _bonusTimestamps | uint256[] |  | 
 | _bonusPercentages | uint256[] |  | 
 
 ### getBonusPercentage
@@ -203,7 +204,7 @@ function setBonuses(uint256[] _bonusLimits, uint256[] _bonusPercentages) public 
 Gets the bonus applicable for the supplied dollar cent value.
 
 ```js
-function getBonusPercentage(uint256 _cents) public view
+function getBonusPercentage(uint256 _timestamp) public view
 returns(uint256)
 ```
 
@@ -211,7 +212,7 @@ returns(uint256)
 
 | Name        | Type           | Description  |
 | ------------- |------------- | -----|
-| _cents | uint256 |  | 
+| _timestamp | uint256 |  | 
 
 ### convertToCents
 
@@ -233,7 +234,7 @@ returns(uint256)
 
 ### _getTokenAmount
 
-:small_red_triangle: overrides [Crowdsale._getTokenAmount](Crowdsale.md#_gettokenamount)
+⤾ overrides [Crowdsale._getTokenAmount](Crowdsale.md#_gettokenamount)
 
 Calculates the number of VRH tokens for the supplied wei value.
 
@@ -265,7 +266,7 @@ returns(uint256)
 
 ### increaseTokenSaleAllocation
 
-Recalculates and/or reassigns the total tokens allocated for the private sale.
+Recalculates and/or reassigns the total tokens allocated for the pre ico.
 
 ```js
 function increaseTokenSaleAllocation() public whenNotPaused onlyAdmin
@@ -296,9 +297,9 @@ function finalizeCrowdsale() public onlyAdmin
 
 ### hasClosed
 
-:small_red_triangle: overrides [TimedCrowdsale.hasClosed](TimedCrowdsale.md#hasclosed)
+⤾ overrides [TimedCrowdsale.hasClosed](TimedCrowdsale.md#hasclosed)
 
-Signifies whether or not the private sale has ended.
+Signifies whether or not the pre ico has ended.
 
 ```js
 function hasClosed() public view
@@ -307,11 +308,11 @@ returns(bool)
 
 **Returns**
 
-Returns true if the private sale has ended.
+Returns true if the pre ico has ended.
 
 ### finalization
 
-:small_red_triangle: overrides [FinalizableCrowdsale.finalization](FinalizableCrowdsale.md#finalization)
+⤾ overrides [FinalizableCrowdsale.finalization](FinalizableCrowdsale.md#finalization)
 
 Reverts the finalization logic.
 Use finalizeCrowdsale instead.
@@ -322,7 +323,7 @@ function finalization() internal
 
 ### _forwardFunds
 
-:small_red_triangle: overrides [Crowdsale._forwardFunds](Crowdsale.md#_forwardfunds)
+⤾ overrides [Crowdsale._forwardFunds](Crowdsale.md#_forwardfunds)
 
 Stops the crowdsale contract from sending ethers.
 
@@ -349,7 +350,7 @@ function withdrawFunds(uint256 _amount) external whenNotPaused onlyAdmin
 Adjusts the closing time of the crowdsale.
 
 ```js
-function changeClosingTime(uint256 _closingTime) external whenNotPaused onlyAdmin
+function changeClosingTime(uint256 _closingTime) public whenNotPaused onlyAdmin
 ```
 
 **Arguments**
@@ -371,13 +372,13 @@ returns(uint256)
 - [FinalizableCrowdsale](FinalizableCrowdsale.md)
 - [EtherPrice](EtherPrice.md)
 - [TokenPrice](TokenPrice.md)
-- [PrivateSale](PrivateSale.md)
 - [ERC20Basic](ERC20Basic.md)
 - [SafeMath](SafeMath.md)
 - [BinanceCoinPrice](BinanceCoinPrice.md)
 - [ERC20Mock](ERC20Mock.md)
 - [BasicToken](BasicToken.md)
 - [SafeERC20](SafeERC20.md)
+- [PreSale](PreSale.md)
 - [TimedCrowdsale](TimedCrowdsale.md)
 - [StandardToken](StandardToken.md)
 - [CustomPausable](CustomPausable.md)

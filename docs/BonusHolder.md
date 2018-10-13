@@ -1,6 +1,7 @@
 ﻿# This contract enables assigning bonus to crowdsale contributors. (BonusHolder.sol)
 
-**contract BonusHolder is [CustomPausable](CustomPausable.md)**
+**↗ Extends: [CustomPausable](CustomPausable.md)**
+**↘ Derived Contracts: [PreSale](PreSale.md)**.
 
 **BonusHolder**
 
@@ -84,13 +85,13 @@ returns(uint256)
 - [FinalizableCrowdsale](FinalizableCrowdsale.md)
 - [EtherPrice](EtherPrice.md)
 - [TokenPrice](TokenPrice.md)
-- [PrivateSale](PrivateSale.md)
 - [ERC20Basic](ERC20Basic.md)
 - [SafeMath](SafeMath.md)
 - [BinanceCoinPrice](BinanceCoinPrice.md)
 - [ERC20Mock](ERC20Mock.md)
 - [BasicToken](BasicToken.md)
 - [SafeERC20](SafeERC20.md)
+- [PreSale](PreSale.md)
 - [TimedCrowdsale](TimedCrowdsale.md)
 - [StandardToken](StandardToken.md)
 - [CustomPausable](CustomPausable.md)

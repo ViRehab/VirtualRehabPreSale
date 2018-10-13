@@ -1,5 +1,7 @@
 ﻿# Ownable (Ownable.sol)
 
+**↘ Derived Contracts: [FinalizableCrowdsale](FinalizableCrowdsale.md), [CustomAdmin](CustomAdmin.md)**.
+
 **Ownable**
 
 The Ownable contract has an owner address, and provides basic authorization control
@@ -86,13 +88,13 @@ function _transferOwnership(address _newOwner) internal
 - [FinalizableCrowdsale](FinalizableCrowdsale.md)
 - [EtherPrice](EtherPrice.md)
 - [TokenPrice](TokenPrice.md)
-- [PrivateSale](PrivateSale.md)
 - [ERC20Basic](ERC20Basic.md)
 - [SafeMath](SafeMath.md)
 - [BinanceCoinPrice](BinanceCoinPrice.md)
 - [ERC20Mock](ERC20Mock.md)
 - [BasicToken](BasicToken.md)
 - [SafeERC20](SafeERC20.md)
+- [PreSale](PreSale.md)
 - [TimedCrowdsale](TimedCrowdsale.md)
 - [StandardToken](StandardToken.md)
 - [CustomPausable](CustomPausable.md)

@@ -30,7 +30,7 @@ For any additional information pertaining to the Virtual Rehab Pre-Sale, kindly 
 
 Thank you in advance for your support.
 
-[Documentation](docs/PrivateSale.md)
+[Documentation](docs/PreSale.md)
 
 # About Virtual Rehab
 

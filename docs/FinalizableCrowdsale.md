@@ -1,6 +1,7 @@
 ﻿# FinalizableCrowdsale (FinalizableCrowdsale.sol)
 
-**contract FinalizableCrowdsale is [Ownable](Ownable.md), [TimedCrowdsale](TimedCrowdsale.md)**
+**↗ Extends: [Ownable](Ownable.md), [TimedCrowdsale](TimedCrowdsale.md)**
+**↘ Derived Contracts: [PreSale](PreSale.md)**.
 
 **FinalizableCrowdsale**
 
@@ -36,6 +37,8 @@ function finalize() public onlyOwner
 
 ### finalization
 
+⤿ Overridden Implementation(s): [PreSale.finalization](PreSale.md#finalization)
+
 Can be overridden to add finalization logic. The overriding function
 should call super.finalization() to ensure the chain of finalization is
 executed entirely.
@@ -50,13 +53,13 @@ function finalization() internal
 - [FinalizableCrowdsale](FinalizableCrowdsale.md)
 - [EtherPrice](EtherPrice.md)
 - [TokenPrice](TokenPrice.md)
-- [PrivateSale](PrivateSale.md)
 - [ERC20Basic](ERC20Basic.md)
 - [SafeMath](SafeMath.md)
 - [BinanceCoinPrice](BinanceCoinPrice.md)
 - [ERC20Mock](ERC20Mock.md)
 - [BasicToken](BasicToken.md)
 - [SafeERC20](SafeERC20.md)
+- [PreSale](PreSale.md)
 - [TimedCrowdsale](TimedCrowdsale.md)
 - [StandardToken](StandardToken.md)
 - [CustomPausable](CustomPausable.md)

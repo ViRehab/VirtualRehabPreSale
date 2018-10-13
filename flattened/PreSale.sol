@@ -1,4 +1,19 @@
+/*
+Copyright 2018 Virtual Rehab (http://virtualrehab.co)
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+ */
+
 pragma solidity 0.4.24;
+
+
 
 /**
  * @title SafeMath
@@ -49,6 +64,12 @@ library SafeMath {
     return c;
   }
 }
+
+
+
+
+
+
 
 /**
  * @title Ownable
@@ -112,6 +133,16 @@ contract Ownable {
   }
 }
 
+
+
+
+
+
+
+
+
+
+
 /**
  * @title ERC20Basic
  * @dev Simpler version of ERC20 interface
@@ -123,6 +154,8 @@ contract ERC20Basic {
   function transfer(address _to, uint256 _value) public returns (bool);
   event Transfer(address indexed from, address indexed to, uint256 value);
 }
+
+
 
 /**
  * @title ERC20 interface
@@ -142,6 +175,13 @@ contract ERC20 is ERC20Basic {
     uint256 value
   );
 }
+
+
+
+
+
+
+
 
 /**
  * @title SafeERC20
@@ -181,6 +221,8 @@ library SafeERC20 {
     require(_token.approve(_spender, _value));
   }
 }
+
+
 
 /**
  * @title Crowdsale
@@ -379,6 +421,8 @@ contract Crowdsale {
   }
 }
 
+
+
 /**
  * @title TimedCrowdsale
  * @dev Crowdsale accepting contributions only within a time frame.
@@ -438,6 +482,8 @@ contract TimedCrowdsale is Crowdsale {
 
 }
 
+
+
 /**
  * @title FinalizableCrowdsale
  * @dev Extension of Crowdsale where an owner can do extra work
@@ -473,6 +519,43 @@ contract FinalizableCrowdsale is Ownable, TimedCrowdsale {
   }
 
 }
+
+/*
+Copyright 2018 Binod Nirvan
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+ */
+
+
+/*
+Copyright 2018 Binod Nirvan
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+ */
+
+
+ 
+
 
 /*
 Copyright 2018 Binod Nirvan
@@ -571,27 +654,6 @@ contract CustomAdmin is Ownable {
   }
 }
 
-/*
-Copyright 2018 Binod Nirvan
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
- */
-
-
- 
-
-
-
 
 
 ///@title This contract enables you to create pausable mechanism to stop in case of emergency.
@@ -625,25 +687,6 @@ contract CustomPausable is CustomAdmin {
     emit Unpaused();
   }
 }
-
-/*
-Copyright 2018 Binod Nirvan
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
- */
-
-
-
 
 ///@title This contract enables to maintain a list of whitelisted wallets.
 contract CustomWhitelist is CustomPausable {
@@ -707,7 +750,6 @@ contract CustomWhitelist is CustomPausable {
     }
   }
 }
-
 /*
 Copyright 2018 Binod Nirvan, Subramanian Venkatesan
 
@@ -940,39 +982,17 @@ contract BonusHolder is CustomPausable {
   }
 }
 
-/*
-Copyright 2018 Virtual Rehab (http://virtualrehab.co)
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-    http://www.apache.org/licenses/LICENSE-2.0
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
- */
 
 
-
-
-
-
-
-
-
-
-
-
-///@title Virtual Rehab Private Sale.
+///@title Virtual Rehab Pre ICO.
 ///@author Binod Nirvan, Subramanian Venkatesan (http://virtualrehab.co)
-///@notice This contract enables contributors to participate in Virtual Rehab Private Sale.
-///
-///The Virtual Rehab Private Sale provides early investors with an opportunity
-///to take part into the Virtual Rehab token sale ahead of the pre-sale and main sale launch.
-///All early investors are expected to successfully complete KYC and whitelisting
+///@notice This contract enables contributors to participate in Virtual Rehab Pre ICO.
+/// 
+///The Virtual Rehab Pre-Sale provides early investors with an opportunity 
+///to take part into the Virtual Rehab token sale ahead of the main sale launch. 
+///All early investors are expected to successfully complete KYC and whitelisting 
 ///to contribute to the Virtual Rehab token sale.
-///
+/// 
 ///US investors must be accredited investors and must provide all requested documentation
 ///to validate their accreditation. We, unfortunately, do not accept contributions
 ///from non-accredited investors within the US along with any contribution
@@ -980,7 +1000,7 @@ limitations under the License.
 ///can be sought by sending an e-mail to investors＠virtualrehab.co.
 ///
 ///Accepted Currencies: Ether, Binance Coin, Credits Token.
-contract PrivateSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice, BonusHolder, FinalizableCrowdsale, CustomWhitelist {
+contract PreSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPrice, BonusHolder, FinalizableCrowdsale, CustomWhitelist {
   ///@notice The ERC20 token contract of Binance Coin. Must be: 0xB8c77482e45F1F44dE1745F52C74426C631bDD52
   ERC20 public binanceCoin;
 
@@ -990,17 +1010,16 @@ contract PrivateSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPr
   ///@notice The total amount of VRH tokens sold in the private round.
   uint256 public totalTokensSold;
 
-  ///@notice The total amount of VRH tokens allocated for the private sale.
+  ///@notice The total amount of VRH tokens allocated for the pre ico.
   uint256 public totalSaleAllocation;
 
-  ///@notice The minimum contribution in dollar cent value.
+  ///@notice minimum contribution in cents
   uint256 public minContributionInUSDCents;
 
-  mapping(address => uint256) public assignedBonusRates;
-  uint[3] public bonusLimits;
+  uint[3] public bonusTimestamps;
   uint[3] public bonusPercentages;
 
-  ///@notice Signifies if the private sale was started.
+  ///@notice Signifies if the pre ico was started.
   bool public initialized;
 
   event SaleInitialized();
@@ -1011,9 +1030,9 @@ contract PrivateSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPr
   event ERC20Withdrawn(address indexed _contract, uint256 _amount);
   event TokensAllocatedForSale(uint256 _newAllowance, uint256 _oldAllowance);
 
-  ///@notice Creates and constructs this private sale contract.
-  ///@param _startTime The date and time of the private sale start.
-  ///@param _endTime The date and time of the private sale end.
+  ///@notice Creates and constructs this pre ico contract.
+  ///@param _startTime The date and time of the pre ico start.
+  ///@param _endTime The date and time of the pre ico end.
   ///@param _binanceCoin Binance coin contract. Must be: 0xB8c77482e45F1F44dE1745F52C74426C631bDD52.
   ///@param _creditsToken credits Token contract. Must be: 0x46b9Ad944d1059450Da1163511069C718F699D31.
   ///@param _vrhToken VRH token contract.
@@ -1027,13 +1046,13 @@ contract PrivateSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPr
     creditsToken = _creditsToken;
   }
 
-  ///@notice Initializes the private sale.
+  ///@notice Initializes the pre ico.
   ///@param _etherPriceInCents Ether Price in cents
   ///@param _tokenPriceInCents VRHToken Price in cents
   ///@param _binanceCoinPriceInCents Binance Coin Price in cents
   ///@param _creditsTokenPriceInCents Credits Token Price in cents
   ///@param _minContributionInUSDCents The minimum contribution in dollar cent value
-  function initializePrivateSale(uint _etherPriceInCents, uint _tokenPriceInCents, uint _binanceCoinPriceInCents, uint _creditsTokenPriceInCents, uint _minContributionInUSDCents) external onlyAdmin {
+  function initializeSale(uint _etherPriceInCents, uint _tokenPriceInCents, uint _binanceCoinPriceInCents, uint _creditsTokenPriceInCents, uint _minContributionInUSDCents, uint[] _bonusTimestamps, uint[] _bonusPercentages) external onlyAdmin {
     require(!initialized);
     require(_etherPriceInCents > 0);
     require(_tokenPriceInCents > 0);
@@ -1049,14 +1068,13 @@ contract PrivateSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPr
 
     increaseTokenSaleAllocation();
 
-    bonusLimits[0] = 25000000;
-    bonusLimits[1] = 10000000;
-    bonusLimits[2] = 1500000;
+    require(_bonusTimestamps.length == 3);
+    require(_bonusPercentages.length == 3);
 
-    bonusPercentages[0] = 50;
-    bonusPercentages[1] = 40;
-    bonusPercentages[2] = 35;
-
+    for(uint8 i=0;i<_bonusTimestamps.length;i++) {
+      bonusTimestamps[i] = _bonusTimestamps[i];
+      bonusPercentages[i] = _bonusPercentages[i];
+    }
 
     initialized = true;
 
@@ -1073,18 +1091,17 @@ contract PrivateSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPr
 
     ///Calculate equivalent amount in dollar cent value.
     uint256 contributionCents  = convertToCents(allowance, binanceCoinPriceInCents, 18);
+    require(contributionCents >= minContributionInUSDCents);
 
-
-    if(assignedBonusRates[msg.sender] == 0) {
-      require(contributionCents >= minContributionInUSDCents);
-      assignedBonusRates[msg.sender] = getBonusPercentage(contributionCents);
-    }
 
     ///Calculate the amount of tokens per the contribution.
     uint256 numTokens = contributionCents.mul(1 ether).div(tokenPriceInCents);
 
+
     ///Calculate the bonus based on the number of tokens and the dollar cent value.
-    uint256 bonus = calculateBonus(numTokens, assignedBonusRates[msg.sender]);
+    uint256 bonus = calculateBonus(numTokens, getBonusPercentage(now));
+
+
 
     require(totalTokensSold.add(numTokens).add(bonus) <= totalSaleAllocation);
 
@@ -1110,16 +1127,13 @@ contract PrivateSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPr
     ///Calculate equivalent amount in dollar cent value.
     uint256 contributionCents = convertToCents(allowance, creditsTokenPriceInCents, 6);
 
-    if(assignedBonusRates[msg.sender] == 0) {
-      require(contributionCents >= minContributionInUSDCents);
-      assignedBonusRates[msg.sender] = getBonusPercentage(contributionCents);
-    }
+    require(contributionCents >= minContributionInUSDCents);
 
     ///Calculate the amount of tokens per the contribution.
     uint256 numTokens = contributionCents.mul(1 ether).div(tokenPriceInCents);
 
     ///Calculate the bonus based on the number of tokens and the dollar cent value.
-    uint256 bonus = calculateBonus(numTokens, assignedBonusRates[msg.sender]);
+    uint256 bonus = calculateBonus(numTokens, getBonusPercentage(now));
 
     require(totalTokensSold.add(numTokens).add(bonus) <= totalSaleAllocation);
 
@@ -1135,12 +1149,11 @@ contract PrivateSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPr
     totalTokensSold = totalTokensSold.add(numTokens).add(bonus);
   }
 
-  function setMinimumContribution(uint256 _cents) public whenNotPaused onlyAdmin {
-    require(_cents > 0);
 
-    emit MinimumContributionChanged(minContributionInUSDCents, _cents);
-    minContributionInUSDCents = _cents;
-  }
+  function setMinimumContribution(uint256 _cents) public whenNotPaused onlyAdmin {
+   emit MinimumContributionChanged(minContributionInUSDCents, _cents);
+   minContributionInUSDCents = _cents;
+ }
 
   ///@notice The equivalent dollar amount of each contribution request.
   uint256 private amountInUSDCents;
@@ -1152,12 +1165,7 @@ contract PrivateSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPr
     require(initialized);
 
     amountInUSDCents = convertToCents(_weiAmount, etherPriceInCents, 18);
-
-    if(assignedBonusRates[_beneficiary] == 0) {
-      require(amountInUSDCents >= minContributionInUSDCents);
-      assignedBonusRates[_beneficiary] = getBonusPercentage(amountInUSDCents);
-    }
-
+    require(amountInUSDCents >= minContributionInUSDCents);
     ///Continue validating the purchase.
     super._preValidatePurchase(_beneficiary, _weiAmount);
   }
@@ -1167,8 +1175,9 @@ contract PrivateSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPr
   ///@param _beneficiary The contributor who wishes to purchase the VRH tokens.
   ///@param _tokenAmount The amount of tokens wished to purchase.
   function _processPurchase(address _beneficiary, uint256 _tokenAmount) internal {
+
     ///amountInUSDCents is set on _preValidatePurchase
-    uint256 bonus = calculateBonus(_tokenAmount, assignedBonusRates[_beneficiary]);
+    uint256 bonus = calculateBonus(_tokenAmount, getBonusPercentage(now));
 
     ///Ensure that the sale does not exceed allocation.
     require(totalTokensSold.add(_tokenAmount).add(bonus) <= totalSaleAllocation);
@@ -1176,7 +1185,7 @@ contract PrivateSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPr
     ///Assign bonuses so that they can be later withdrawn.
     assignBonus(_beneficiary, bonus);
 
-    ///Update the sum of tokens sold during the private sale.
+    ///Update the sum of tokens sold during the pre ico.
     totalTokensSold = totalTokensSold.add(_tokenAmount).add(bonus);
 
     ///Continue processing the purchase.
@@ -1192,23 +1201,21 @@ contract PrivateSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPr
 
   ///@notice Sets the bonus structure.
   ///The bonus limits must be in decreasing order.
-  function setBonuses(uint[] _bonusLimits, uint[] _bonusPercentages) public onlyAdmin {
-    require(_bonusLimits.length == _bonusPercentages.length);
-    require(_bonusPercentages.length == 3);
-    for(uint8 i=0;i<_bonusLimits.length;i++) {
-      bonusLimits[i] = _bonusLimits[i];
+  function setBonuses(uint[] _bonusTimestamps, uint[] _bonusPercentages) public onlyAdmin {
+    require(_bonusTimestamps.length == _bonusPercentages.length);
+    require(_bonusTimestamps.length == 3);
+    for(uint8 i=0;i<_bonusTimestamps.length;i++) {
+      bonusTimestamps[i] = _bonusTimestamps[i];
       bonusPercentages[i] = _bonusPercentages[i];
     }
   }
 
-
   ///@notice Gets the bonus applicable for the supplied dollar cent value.
-  function getBonusPercentage(uint _cents) view public returns(uint256) {
-    for(uint8 i=0;i<bonusLimits.length;i++) {
-      if(_cents >= bonusLimits[i]) {
-        return bonusPercentages[i];
-      }
+  function getBonusPercentage(uint _timestamp) view public returns(uint256) {
+    for(uint8 i=0;i<bonusTimestamps.length;i++) {
+      if(_timestamp <= bonusTimestamps[i]) return bonusPercentages[i];
     }
+    return 0;
   }
 
   ///@notice Converts the amount of Ether (wei) or amount of any token having 18 decimal place divisible
@@ -1229,7 +1236,7 @@ contract PrivateSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPr
     return _getTokenAmount(_weiAmount);
   }
 
-  ///@notice Recalculates and/or reassigns the total tokens allocated for the private sale.
+  ///@notice Recalculates and/or reassigns the total tokens allocated for the pre ico.
   function increaseTokenSaleAllocation() public whenNotPaused onlyAdmin {
     ///Check the allowance of this contract to spend.
     uint256 allowance = token.allowance(msg.sender, this);
@@ -1237,7 +1244,7 @@ contract PrivateSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPr
     ///Get the current allocation.
     uint256 current = totalSaleAllocation;
 
-    ///Update the total token allocation for the private sale.
+    ///Update the total token allocation for the pre ico.
     totalSaleAllocation = totalSaleAllocation.add(allowance);
 
     ///Transfer (receive) the allocated VRH tokens.
@@ -1284,8 +1291,8 @@ contract PrivateSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPr
     emit Finalized();
   }
 
-  ///@notice Signifies whether or not the private sale has ended.
-  ///@return Returns true if the private sale has ended.
+  ///@notice Signifies whether or not the pre ico has ended.
+  ///@return Returns true if the pre ico has ended.
   function hasClosed() public view returns (bool) {
     return (totalTokensSold >= totalSaleAllocation) || super.hasClosed();
   }
@@ -1313,7 +1320,7 @@ contract PrivateSale is TokenPrice, EtherPrice, BinanceCoinPrice, CreditsTokenPr
 
   ///@notice Adjusts the closing time of the crowdsale.
   ///@param _closingTime The timestamp when the crowdsale is closed.
-  function changeClosingTime(uint256 _closingTime) external whenNotPaused onlyAdmin {
+  function changeClosingTime(uint256 _closingTime) public whenNotPaused onlyAdmin {
     emit ClosingTimeChanged(_closingTime, closingTime);
 
     closingTime = _closingTime;

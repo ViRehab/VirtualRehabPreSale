@@ -1,6 +1,7 @@
 ﻿# TimedCrowdsale (TimedCrowdsale.sol)
 
-**contract TimedCrowdsale is [Crowdsale](Crowdsale.md)**
+**↗ Extends: [Crowdsale](Crowdsale.md)**
+**↘ Derived Contracts: [FinalizableCrowdsale](FinalizableCrowdsale.md)**.
 
 **TimedCrowdsale**
 
@@ -38,6 +39,8 @@ modifier onlyWhileOpen() internal
 
 ### hasClosed
 
+⤿ Overridden Implementation(s): [PreSale.hasClosed](PreSale.md#hasclosed)
+
 Checks whether the period in which the crowdsale is open has already elapsed.
 
 ```js
@@ -51,7 +54,9 @@ Whether crowdsale period has elapsed
 
 ### _preValidatePurchase
 
-:small_red_triangle: overrides [Crowdsale._preValidatePurchase](Crowdsale.md#_prevalidatepurchase)
+⤾ overrides [Crowdsale._preValidatePurchase](Crowdsale.md#_prevalidatepurchase)
+
+⤿ Overridden Implementation(s): [PreSale._preValidatePurchase](PreSale.md#_prevalidatepurchase)
 
 Extend parent behavior requiring to be within contributing period
 
@@ -72,13 +77,13 @@ function _preValidatePurchase(address _beneficiary, uint256 _weiAmount) internal
 - [FinalizableCrowdsale](FinalizableCrowdsale.md)
 - [EtherPrice](EtherPrice.md)
 - [TokenPrice](TokenPrice.md)
-- [PrivateSale](PrivateSale.md)
 - [ERC20Basic](ERC20Basic.md)
 - [SafeMath](SafeMath.md)
 - [BinanceCoinPrice](BinanceCoinPrice.md)
 - [ERC20Mock](ERC20Mock.md)
 - [BasicToken](BasicToken.md)
 - [SafeERC20](SafeERC20.md)
+- [PreSale](PreSale.md)
 - [TimedCrowdsale](TimedCrowdsale.md)
 - [StandardToken](StandardToken.md)
 - [CustomPausable](CustomPausable.md)

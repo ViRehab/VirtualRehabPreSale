@@ -1,5 +1,7 @@
 ﻿# Crowdsale (Crowdsale.sol)
 
+**↘ Derived Contracts: [TimedCrowdsale](TimedCrowdsale.md)**.
+
 **Crowdsale**
 
 Crowdsale is a base contract for managing a token crowdsale,
@@ -64,6 +66,8 @@ function buyTokens(address _beneficiary) public payable payable
 
 ### _preValidatePurchase
 
+⤿ Overridden Implementation(s): [PreSale._preValidatePurchase](PreSale.md#_prevalidatepurchase),[TimedCrowdsale._preValidatePurchase](TimedCrowdsale.md#_prevalidatepurchase)
+
 Validation of an incoming purchase. Use require statements to revert state when conditions are not met. Use `super` in contracts that inherit from Crowdsale to extend their validations.
 Example from CappedCrowdsale.sol's _preValidatePurchase method: 
   super._preValidatePurchase(_beneficiary, _weiAmount);
@@ -112,6 +116,8 @@ function _deliverTokens(address _beneficiary, uint256 _tokenAmount) internal
 
 ### _processPurchase
 
+⤿ Overridden Implementation(s): [PreSale._processPurchase](PreSale.md#_processpurchase)
+
 Executed when a purchase has been validated and is ready to be executed. Not necessarily emits/sends tokens.
 
 ```js
@@ -142,6 +148,8 @@ function _updatePurchasingState(address _beneficiary, uint256 _weiAmount) intern
 
 ### _getTokenAmount
 
+⤿ Overridden Implementation(s): [PreSale._getTokenAmount](PreSale.md#_gettokenamount)
+
 Override to extend the way in which ether is converted to tokens.
 
 ```js
@@ -161,6 +169,8 @@ Number of tokens that can be purchased with the specified _weiAmount
 
 ### _forwardFunds
 
+⤿ Overridden Implementation(s): [PreSale._forwardFunds](PreSale.md#_forwardfunds)
+
 Determines how ETH is stored/forwarded on purchases.
 
 ```js
@@ -173,13 +183,13 @@ function _forwardFunds() internal
 - [FinalizableCrowdsale](FinalizableCrowdsale.md)
 - [EtherPrice](EtherPrice.md)
 - [TokenPrice](TokenPrice.md)
-- [PrivateSale](PrivateSale.md)
 - [ERC20Basic](ERC20Basic.md)
 - [SafeMath](SafeMath.md)
 - [BinanceCoinPrice](BinanceCoinPrice.md)
 - [ERC20Mock](ERC20Mock.md)
 - [BasicToken](BasicToken.md)
 - [SafeERC20](SafeERC20.md)
+- [PreSale](PreSale.md)
 - [TimedCrowdsale](TimedCrowdsale.md)
 - [StandardToken](StandardToken.md)
 - [CustomPausable](CustomPausable.md)
