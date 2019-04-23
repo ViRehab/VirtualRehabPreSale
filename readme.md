@@ -11,7 +11,7 @@ The Virtual Rehab Pre-Sale provides early investors with an opportunity to take 
 **Timing**
 
 ```git
-All Contributions to the Pre-Sale will be accepted from November 1st at 9:00 AM EST (1:00 PM GMT) until November 14th at 6:00 PM EST (10:00 PM GMT)
+All Contributions to the Pre-Sale will be accepted from TBC at 9:00 AM EST (1:00 PM GMT) until TBC at 6:00 PM EST (10:00 PM GMT)
 ```
 
 
